@@ -25,18 +25,14 @@ const festivalSchema = new Schema({
     ranking: {
         type: Number,
     },
-    comments: {
-        comment_id: [{
-            type: Schema.Types.ObjectId,
-            ref: 'Comment'
-        }]
-    },
-    billboard: {
-        date_id: [{
-            type: Schema.Types.ObjectId,
-            ref: 'FestivalDate'
-        }]
-    }
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
+    billboard: [{
+        type: Schema.Types.ObjectId,
+        ref: 'FestivalDate'
+    }]
 });
 
 festivalSchema.index({ location: '2dsphere' })

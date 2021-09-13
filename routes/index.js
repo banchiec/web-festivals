@@ -1,8 +1,10 @@
-const router = require("express").Router();
 
-/* GET home page */
-router.get("/", (req, res, next) => {
-  res.render("index");
-});
+module.exports = app => {
+  app.use('/', require('./base.route'))
+  app.use('/festivales', require('./festival.route'))
+  app.use('/usuario', require('./user.route'))
 
-module.exports = router;
+  // app.use('/festivales', require('./festival.route.js'))
+  // app.use('/usuario', require('./user.route'))
+}
+

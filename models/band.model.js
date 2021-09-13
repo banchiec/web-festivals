@@ -17,7 +17,6 @@ const bandSchema = new Schema({
     },
     stream: {
         type: String,
-        required: true,
     },
 
 })

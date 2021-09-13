@@ -20,7 +20,8 @@ const userSchema = new Schema({
   role: {
     type: String,
     enum: ['user', 'organizer', 'admin'],
-    default: 'user'
+    default: 'user',
+    required: true
   },
   username: {
     type: String,
@@ -33,7 +34,7 @@ const userSchema = new Schema({
   },
   photo: {
     type: String,
-    default: "img"
+    default: "img.jpg"
   }
 
 });

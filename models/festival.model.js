@@ -14,20 +14,28 @@ const festivalSchema = new Schema({
         },
         coordinates: [Number]
     },
-    ciudad: {
+    city: {
         type: String,
         required: true
     },
-    Pais: {
+    country: {
         type: String,
         required: true
     },
-    cartelera: {
-        type: String,
-        fecha_id: {
+    ranking: {
+        type: Number,
+    },
+    comments: {
+        comment_id: [{
             type: Schema.Types.ObjectId,
-            ref: 'festivalDate'
-        }
+            ref: 'Comment'
+        }]
+    },
+    billboard: {
+        date_id: [{
+            type: Schema.Types.ObjectId,
+            ref: 'FestivalDate'
+        }]
     }
 });
 

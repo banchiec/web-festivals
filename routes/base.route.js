@@ -1,4 +1,7 @@
 const router = require('express').Router()
+const bcrypt = require('bcrypt')
+
+const User = require('../models/User.model')
 
 router.get('/', (req, res, next) => {
     res.render('index')
@@ -6,50 +9,70 @@ router.get('/', (req, res, next) => {
 
 // registro
 router.get('/registro', (req, res, next) => {
-
     res.render('signup')
 })
 
 router.post("/registro", (req, res) => {
-
     console.log(req.body)
+    const { firstName, lastName, email, username, userPwd } = req.body
 
-    // const { username, userPwd } = req.body
+    if (userPwd.length === 0) {
+        res.render('signup-form', { errorMsg: "Contraseña obligatoria" })
+        return
+    }
 
-    //   if (userPwd.length === 0) {
-    //     res.render('signup-form', { errorMsg: "Contraseña obligatoria" })
-    //     return
-    //   }
+    const bcryptSalt = 10
+    const salt = bcrypt.genSaltSync(bcryptSalt)
+    const hashPass = bcrypt.hashSync(userPwd, salt)
 
-    //   const bcryptSalt = 10
-    //   const salt = bcrypt.genSaltSync(bcryptSalt)
-    //   const hashPass = bcrypt.hashSync(userPwd, salt)
-
-    //   User
-    //     .findOne({ username })
-    //     .then(user => {
-    //       if (user) {
-    //         res.render('signup-form', { errorMsg: "El usuario ya existe" })
-    //         return
-    //       }
-
-    //       User
-    //         .create({ username, password: hashPass })
-    //         .then(() => {
-    //           res.redirect('/')
-    //         })
-    //         .catch(error => console.log(error))
-    //     })
-    //     .catch(err => console.log(err))
+    User
+        .findOne({ username })
+        .then(user => {
+            if (user) {
+                res.render('signup-form', { errorMsg: "El usuario ya existe" })
+                return
+            }
+            User
+                .create({ firstName, lastName, email, username, password: hashPass })
+                .then(() => {
+                    res.redirect('/')
+                })
+                .catch(error => console.log(error))
+        })
+        .catch(err => console.log(err))
 
 });
 
 // iniciar-sesion
 router.get('/iniciar-sesion', (req, res, next) => {
-    res.render('login')
+    res.render('login-form')
 })
+
+
 router.post('/iniciar-sesion', (req, res, next) => {
-    res.send('iniciar-session')
+    const { username, userPwd } = req.body
+    if (userPwd.length === 0 || username.length === 0) {
+        res.render('login-form', { errorMsg: "Todos los campos deben ser rellenados" })
+        return
+    }
+    User
+        .findOne({ username })
+        .then(user => {
+            // console.log(user)
+            if (!user) {
+                res.render('login-form', { errorMsg: "El usuario no existe" })
+                return
+            }
+            if (bcrypt.compareSync(userPwd, user.password) === false) {
+                res.render('login-form', { errorMsg: "Contraseña incorrecta" })
+                return
+            }
+            // console.log("entro")
+            req.session.currentUser = user
+            // console.log(req.session.currentUser)
+            res.redirect('/')
+        })
+        .catch(err => console.log(err))
 })
 
 module.exports = router

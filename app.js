@@ -9,8 +9,10 @@ const hbs = require("hbs");
 const app = express();
 
 require("./config")(app);
-require("./routes")(app);
 require('./config/session.config')(app);
+
+require("./routes")(app);
+
 
 const projectName = "web-festivals";
 const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase();

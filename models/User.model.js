@@ -37,7 +37,7 @@ const userSchema = new Schema({
     default: "img.jpg"
   }
 
-});
+}, { timestamps: true });
 
 const User = model("User", userSchema);
 

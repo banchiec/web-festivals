@@ -1,0 +1,42 @@
+<div class="container mt-5 ">
+
+    <div class="row justify-content-center">
+        <form action='/registro' method="POST">
+            <div class="form-group">
+                <label for="firstName">Nombre</label>
+                <input type="text" class="form-control" id="firstName" name="firstName">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Apellidos</label>
+                <input type="text" class="form-control" id="lastName" name="lastName">
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Rol</option>
+                <option value="1" name='user'>Usuario</option>
+                <option value="2" name='organizer'>Organizador</option>
+                {{!-- <option value="3" name='admin'>Administrador</option> --}}
+            </select>
+
+            <div class="form-group">
+                <label for="exampleInputUsername">Username</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword">Password</label>
+                <input type="password" class="form-control" id="password" name="userPwd">
+            </div>
+            {{#if errorMsg}}
+            <p>
+                {{errorMsg}}
+            </p>
+            {{/if}}
+            <button type="submit" class="btn btn-primary">Registrarme</button>
+        </form>
+    </div>
+
+</div>

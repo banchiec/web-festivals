@@ -1,6 +1,11 @@
 <h1>{{title}} 🚀</h1>
-<h1>{{currentSession}}</h1>
+{{!-- <h1>{{currentSession}}</h1> --}}
 <p>Welcome {{currentSession.username}}!</p>
+<p>{{isAdmin}}</p>
+{{#if isAdmin}}
+<a href="/usuarios">Usuarios</a>
+<a href="/bandas">Bandas</a>
+{{/if}}
 {{#if currentSession}}
 <a href="/cerrar-sesion">Cerrar sesión</a>
 <hr>
@@ -10,6 +15,3 @@
 <a href="/registro">Registrarte</a>
 {{/if}}
 <h1>{{currentSession.role}}</h1>
-{{#if isAdmin}}
-<a href="/usuarios">Usuarios</a>
-{{/if}}

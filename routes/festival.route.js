@@ -11,6 +11,7 @@ router.get('/nuevo', (req, res, next) => {
 })
 
 router.post('/nuevo', (req, res, next) => {
+  
   const { name, lat, lng, city, country, ranking, billboard } = req.body
 
 

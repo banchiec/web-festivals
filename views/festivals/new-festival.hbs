@@ -1,14 +1,9 @@
-<div class="container mt-4">
+<div class="container-fluid">
 
-    <div class="row">
-
-        <div class="col-md-6">
-            <h1 style="font-weight: 100">Nuevo Festival</h1>
-        </div>
-
-        <div class="col-md-6">
-
-            <form action="/festivales/nuevo" method="post">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <h1 style="font-weight: 100">Crear Festival</h1>
+            <form action="/festivales/crear" method="post">
                 <div class="form-group">
                     <label for="name-input">Nombre</label>
                     <input name="name" type="text" class="form-control" id="name-input">
@@ -30,36 +25,89 @@
                     <label for="country-input">Pais</label>
                     <input name="country" type="text" class="form-control" id="country-input">
                 </div>
+                <section class="container">
+                    <section class="billboard-container">
+                        <h2>Crear Fecha</h2>
+                        <form id="billboard-form" class="billboard-form">
+                            <div class="field">
+                                <label for="date">Fecha: </label>
+                                <input type="date" name="date">
+                            </div>
+                            <div class="field">
+                                <label for="price">Precio: </label>
+                                <input type="number" name="price">
+                            </div>
+                            <div class="Bandas">
+                                <select id="bands" multiple="multiple">
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <p id="send-data">Create</p>
+                        </form>
+                    </section>
+                    <button type="submit" class="btn btn-dark">Crear Festival</button>
+                    <a href="/festivales" class="btn btn-dark">Volver</a>
+            </form>
         </div>
 
-        <section class="container">
-            <section class="billboard-container">
-                <h2>Nueva Fecha</h2>
-                <form id="billboard-form" class="billboard-form">
-                    <div class="field">
-                        <label for="date">Fecha: </label>
-                        <input type="date" name="date">
-                    </div>
-                    <div class="field">
-                        <label for="price">Precio: </label>
-                        <input type="number" name="price">
-                    </div>
-                    <div class="Bandas">
-                        <select id="bands" multiple="multiple">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <p id="send-data">Create</p>
-                </form>
-            </section>
-            <button type="submit" class="btn btn-dark">Crear Festival</button>
 
-            <a href="/festivales" class="btn btn-dark">Volver</a>
+        <div class="col-md-4">
+            <h1 style="font-weight: 100">Crear Festival</h1>
+            <form action="/festivales/crear" method="post">
+                <div class="form-group">
+                    <label for="name-input">Nombre</label>
+                    <input name="name" type="text" class="form-control" id="name-input">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">ubicación:Longitud</label>
+                    <input name="lng" type="number" class="form-control" id="longitude">
+                </div>
+                <div class="form-group">
+                    <label for="latitude">ubicación:latitud</label>
+                    <input name="lat" type="Number" class="form-control" id="latitude">
+                </div>
+
+                <div class="form-group">
+                    <label for="city-input">Ciudad</label>
+                    <input name="city" type="text" class="form-control" id="city-input">
+                </div>
+                <div class="form-group">
+                    <label for="country-input">Pais</label>
+                    <input name="country" type="text" class="form-control" id="country-input">
+                </div>
+                <section class="container">
+                    <section class="billboard-container">
+                        <h2>Crear Fecha</h2>
+                        <form id="billboard-form" class="billboard-form">
+                            <div class="field">
+                                <label for="date">Fecha: </label>
+                                <input type="date" name="date">
+                            </div>
+                            <div class="field">
+                                <label for="price">Precio: </label>
+                                <input type="number" name="price">
+                            </div>
+                            <div class="Bandas">
+                                <select id="bands" name="bands" multiple="multiple">
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <p id="send-data">Create</p>
+                        </form>
+                    </section>
+                    <button type="submit" class="btn btn-dark">Crear Festival</button>
+                    <a href="/festivales" class="btn btn-dark">Volver</a>
             </form>
-            <div id="day-box">
+        </div>
 
+        <div class="col-md-4">
+            <div id="day-box">
             </div>
+        </div>
+
     </div>
 </div>

@@ -9,12 +9,12 @@ document.addEventListener(
 
 
     button.addEventListener("click", function (e) {
-
-
       console.log(select.value)
+
       box.innerHTML = `<div class="day"><p class="data"></p><p class="data"></p><p class="data"></p></div>`
 
     })
+
     console.log("web-festivals JS imported successfully!");
   },
   false

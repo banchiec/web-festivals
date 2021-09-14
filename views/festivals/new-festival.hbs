@@ -1,0 +1,56 @@
+<div class="container mt-4">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <h1 style="font-weight: 100">Nuevo Festival</h1>
+        </div>
+
+        <div class="col-md-6">
+
+            <form action="/festivales/nuevo" method="post">
+                <div class="form-group">
+                    <label for="name-input">Nombre</label>
+                    <input name="name" type="text" class="form-control" id="name-input">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">ubicación:Longitud</label>
+                    <input name="lng" type="number" class="form-control" id="longitude">
+                </div>
+                <div class="form-group">
+                    <label for="latitude">ubicación:latitud</label>
+                    <input name="lat" type="Number" class="form-control" id="latitude">
+                </div>
+
+                <div class="form-group">
+                    <label for="city-input">Ciudad</label>
+                    <input name="city" type="text" class="form-control" id="city-input">
+                </div>
+                <div class="form-group">
+                    <label for="country-input">Pais</label>
+                    <input name="country" type="text" class="form-control" id="country-input">
+                </div>
+                <div class="form-group">
+                    <label for="billboard">Cartelera:</label>
+                    <label for="date">Fecha:</label>
+                    <input name="date" type="date" class="form-control" id="date">
+                    <label for="price">Precio:</label>
+                    <input name="price" type="number" class="form-control" id="price">
+                    <div class="Bandas">
+                        <select id="my-select" multiple="multiple">
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                            <option value="4">Four</option>
+                            <option value="5">Five</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-dark">Crear Festival</button>
+                <a href="/festivales" class="btn btn-dark">Volver</a>
+
+            </form>
+        </div>
+    </div>
+</div>

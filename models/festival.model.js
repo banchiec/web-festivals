@@ -7,11 +7,12 @@ const festivalSchema = new Schema({
         required: true
     },
     location: {
-        required: true,
+
         type: {
             type: String
         },
         coordinates: [Number]
+
     },
     city: {
         type: String,

@@ -18,7 +18,9 @@ router.get('/registro', (req, res, next) => {
 })
 
 router.post("/registro", CDNupload.single('photo'), (req, res) => {
+
     console.log(req.body)
+
     const { firstName, lastName, email, username, userPwd } = req.body
 
     if (userPwd.length === 0) {

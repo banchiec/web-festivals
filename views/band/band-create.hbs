@@ -2,7 +2,7 @@
 
 
     <div class="row justify-content-center">
-        <form action='/festivales' method="POST" enctype="multipart/form-data">
+        <form action='/bandas/crear' method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Nombre</label>
                 <input type="text" class="form-control" id="name" name="name">
@@ -13,13 +13,25 @@
             </div>
             <div class="form-group">
                 <label for="photo">Foto</label>
-                <input type="file" class="form-control" id="photo" name="photo">
+                <input type="file" class="form-control" id="photo" name="photos">
             </div>
             <div class="form-group">
                 <label for="photo">Vídeo</label>
-                <input type="file" class="form-control" id="stream" name="stream">
+                <input type="file" class="form-control" id="stream" name="photos">
             </div>
 
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ln3wAdRAim4"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+
+            {{!-- <iframe width="560" height="315"
+                src="https://www.youtube.com/watch?v=wXTJBr9tt8Q&ab_channel=TheBeatlesVEVO" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <video width="400" height="400" src=""> --}}
+
+            </video>
 
             {{#if errorMsg}}
             <p>

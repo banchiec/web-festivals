@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 
 const bandSchema = new Schema({
-
     name: {
         unique: true,
         type: String,
@@ -18,7 +17,6 @@ const bandSchema = new Schema({
     stream: {
         type: String,
     },
-
 })
 
 const Band = model("Band", bandSchema);

@@ -2,11 +2,9 @@ const router = require('express').Router()
 const bcrypt = require('bcrypt')
 const app = require('../app')
 
-
 // cloudinary
 const { CDNupload } = require('../config/upload.config')
 const User = require('../models/User.model')
-
 
 router.get('/', (req, res, next) => {
     res.render('index', { isAdmin: req.session.currentUser?.role == 'admin' })
@@ -40,7 +38,7 @@ router.post("/registro", CDNupload.single('photo'), (req, res) => {
                 return
             }
             User
-                .create({ firstName, lastName, email, username, password: hashPass })
+                .create({ firstName, lastName, email, photo: req.file.path, username, password: hashPass })
                 .then(() => {
                     res.redirect('/')
                 })
@@ -64,7 +62,6 @@ router.post('/iniciar-sesion', (req, res, next) => {
     User
         .findOne({ username })
         .then(user => {
-            // console.log(user)
             if (!user) {
                 res.render('login-form', { errorMsg: "El usuario no existe" })
                 return
@@ -73,10 +70,9 @@ router.post('/iniciar-sesion', (req, res, next) => {
                 res.render('login-form', { errorMsg: "Contraseña incorrecta" })
                 return
             }
-            console.log("entro")
             req.session.currentUser = user
-            req.app.locals.currentSession = req.session.currentUser
-            // console.log(req.session.currentUser)
+            let currentUser = req.session.currentUser
+            req.app.locals.currentSession = currentUser
             res.redirect('/')
         })
         .catch(err => console.log(err))

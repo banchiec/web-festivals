@@ -1,1 +1,12 @@
-<h1>Bandaas</h1>
+{{#each bands}}
+<div class="card mt-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{photo}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{name}}</h5>
+        {{!-- <p class="card-text">
+            {{description}}
+        </p> --}}
+        <a href="/bandas/{{id}}" class="btn btn-primary text-align-center">Detalles</a>
+    </div>
+</div>
+{{/each}}

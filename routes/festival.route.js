@@ -3,15 +3,14 @@ const router = require('express').Router()
 
 const Festival = require('../models/festival.model')
 
-router.get('/nuevo', (req, res, next) => {
-
+router.get('/crear', (req, res, next) => {
   Festival.find()
     .then(allFestivals => res.render('festivals/new-festival', { festivals: allFestivals }))
     .catch(err => next(new Error(err)))
 })
 
-router.post('/nuevo', (req, res, next) => {
-  
+router.post('/crear', (req, res, next) => {
+
   const { name, lat, lng, city, country, ranking, billboard } = req.body
   console.log(req.body)
 

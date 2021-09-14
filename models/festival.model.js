@@ -29,13 +29,11 @@ const festivalSchema = new Schema({
     comments: [{
         type: Schema.Types.ObjectId,
         ref: 'Comment'
-    }]
-    ,
+    }],
     billboard: [{
         type: Schema.Types.ObjectId,
         ref: 'FestivalDate'
     }]
-
 });
 
 festivalSchema.index({ location: '2dsphere' })

@@ -1,10 +1,15 @@
 const router = require('express').Router()
 const bcrypt = require('bcrypt')
+const app = require('../app')
 
+
+// cloudinary
+const { CDNupload } = require('../config/upload.config')
 const User = require('../models/User.model')
 
+
 router.get('/', (req, res, next) => {
-    res.render('index')
+    res.render('index', { isAdmin: req.session.currentUser?.role == 'admin' })
 })
 
 // registro
@@ -12,7 +17,7 @@ router.get('/registro', (req, res, next) => {
     res.render('signup')
 })
 
-router.post("/registro", (req, res) => {
+router.post("/registro", CDNupload.single('photo'), (req, res) => {
     console.log(req.body)
     const { firstName, lastName, email, username, userPwd } = req.body
 
@@ -40,7 +45,6 @@ router.post("/registro", (req, res) => {
                 .catch(error => console.log(error))
         })
         .catch(err => console.log(err))
-
 });
 
 // iniciar-sesion
@@ -67,12 +71,16 @@ router.post('/iniciar-sesion', (req, res, next) => {
                 res.render('login-form', { errorMsg: "Contraseña incorrecta" })
                 return
             }
-            // console.log("entro")
+            console.log("entro")
             req.session.currentUser = user
+            req.app.locals.currentSession = req.session.currentUser
             // console.log(req.session.currentUser)
             res.redirect('/')
         })
         .catch(err => console.log(err))
 })
-
+router.get('/cerrar-sesion', (req, res) => {
+    delete req.app.locals.currentSession
+    req.session.destroy(() => res.redirect('/'))
+})
 module.exports = router

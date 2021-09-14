@@ -1,3 +1,13 @@
 <h1>{{title}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+<h1>{{currentSession}}</h1>
+<p>Welcome {{currentSession.username}}!</p>
+{{#if currentSession}}
+<a href="/cerrar-sesion">Cerrar sesión</a>
+{{else}}
+<a href="/iniciar-sesion">Iniciar sesion</a>
 <a href="/registro">Registrarte</a>
+{{/if}}
+<h1>{{currentSession.role}}</h1>
+{{#if isAdmin}}
+<a href="/usuarios">Usuarios</a>
+{{/if}}

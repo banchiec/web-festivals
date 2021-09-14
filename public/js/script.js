@@ -6,13 +6,17 @@ document.addEventListener(
     const box = document.getElementById("day-box")
     const inputs = document.querySelectorAll(".billboard-container input")
     const select = document.querySelector(".billboard-container select")
+    const festivalContainer = document.querySelector(".festival-container")
 
 
     button.addEventListener("click", function (e) {
 
+      let containerDate = document.createElement('div')
+      containerDate.classList.add()
+      box.innerHTML += `<div class="day"><p class="billboard-container">${inputs[0].value}</p><p class="billboard-container">${inputs[1].value}</p><p class="billboard-container">${[select.value]}</p></div>`
+      // festivalContainer.appendChild(box)
 
-      console.log(select.value)
-      box.innerHTML = `<div class="day"><p class="data"></p><p class="data"></p><p class="data"></p></div>`
+
 
     })
     console.log("web-festivals JS imported successfully!");

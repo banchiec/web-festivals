@@ -11,18 +11,18 @@ router.get('/nuevo', (req, res, next) => {
 })
 
 router.post('/nuevo', (req, res, next) => {
-
+  
   const { name, lat, lng, city, country, ranking, billboard } = req.body
+  console.log(req.body)
 
+  const location = {
+    type: 'Point',
+    coordinates: [lat, lng]
+  }
 
-  // const location = {
-  //   type: 'Point',
-  //   coordinates: [lat, lng]
-  // }
-
-  // Festival.create({ name, location, city, country, ranking, billboard: date })
-  //   .then(() => res.redirect('/'))
-  //   .catch(err => next(new Error(err)))
+  Festival.create({ name, location, city, country, ranking, billboard })
+    .then(() => res.redirect('/'))
+    .catch(err => next(new Error(err)))
 })
 
 //list

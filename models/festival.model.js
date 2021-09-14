@@ -5,11 +5,7 @@ const festivalSchema = new Schema({
     name: {
         type: String,
         required: true,
-<<<<<<< HEAD
-        unique:true
-=======
         unique: true
->>>>>>> banchi
     },
     location: {
         type: {

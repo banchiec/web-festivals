@@ -25,12 +25,13 @@ router.post('/crear', (req, res, next) => {
 })
 
 //list
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
+
 
   Festival.find()
     .populate('Comment')
     .populate('FestivalDate')
-    .then(allfestivals => res.render('festivals/festivals-index', { festivals: allfestivals }))
+    .then(allFestivals => res.render('festivals/festivals-index', { festivals: allFestivals }))
     .catch(err => next(new Error(err)))
 
 })

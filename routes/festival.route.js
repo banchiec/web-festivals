@@ -26,12 +26,14 @@ router.post('/crear', (req, res, next) => {
 
 //list
 router.get('/', (req, res, next) => {
-
-
   Festival.find()
-    .populate('Comment')
-    .populate('FestivalDate')
-    .then(allFestivals => res.render('festivals/festivals-index', { festivals: allFestivals }))
+    // .populate('comments')
+    .populate('billboard')
+    .then(allFestivals => {
+
+      console.log(allFestivals[0].billboard)
+      res.render('festivals/festivals-index', { festivals: allFestivals })
+    })
     .catch(err => next(new Error(err)))
 
 })

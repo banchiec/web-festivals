@@ -38,7 +38,11 @@ router.get('/', (req, res, next) => {
     .find()
     // .populate('Comment')
     // .populate('FestivalDate')
-    .then(festivals => res.render('festivals/festivals', { festivals }))
+    .populate('billboard')
+    .then(festivals => {
+      console.log(festivals[0].billboard)
+      res.render('festivals/festivals', { festivals })
+    })
     .catch(err => next(new Error(err)))
 })
 

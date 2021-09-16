@@ -7,6 +7,11 @@ const festivalSchema = new Schema({
         required: true,
         unique: true
     },
+    photo: {
+        type: String,
+        default: "https://res.cloudinary.com/dcdfzbe8n/image/upload/v1631559840/png-clipart-computer-icons-registered-user-login-user-profile-others-blue-logo_byluma.png"
+      },
+
     location: {
         type: {
             type: String

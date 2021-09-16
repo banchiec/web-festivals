@@ -12,7 +12,7 @@ const festivalDateSchema = new Schema({
     band_id: [{
         type: Schema.Types.ObjectId,
         ref: 'Band'
-    }]
+    }],
 })
 
 const FestivalDate = model("FestivalDate", festivalDateSchema);

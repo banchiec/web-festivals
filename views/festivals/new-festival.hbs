@@ -1,20 +1,19 @@
 <div class="container-fluid">
-
     <div class="row mt-4">
         <div class="col-md-4">
             <h1 style="font-weight: 100">Crear Festival</h1>
-            <form action="/festivales/crear" method="post">
+            <form id="form" action="/festivales/crear" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name-input">Nombre</label>
                     <input name="name" type="text" class="form-control" id="name-input">
                 </div>
                 <div class="form-group">
                     <label for="longitude">ubicación:Longitud</label>
-                    <input name="lng" type="number" class="form-control" id="longitude">
+                    <input name="lng" type="text" class="form-control" id="longitude">
                 </div>
                 <div class="form-group">
                     <label for="latitude">ubicación:latitud</label>
-                    <input name="lat" type="Number" class="form-control" id="latitude">
+                    <input name="lat" type="text" class="form-control" id="latitude">
                 </div>
 
                 <div class="form-group">
@@ -25,60 +24,46 @@
                     <label for="country-input">Pais</label>
                     <input name="country" type="text" class="form-control" id="country-input">
                 </div>
-                <section class="container">
-                    <section class="billboard-container">
-                        <h2>Crear Fecha</h2>
-                        <form id="billboard-form" class="billboard-form">
-                            <div class="field">
-                                <label for="date">Fecha: </label>
-                                <input type="date" name="date">
-                            </div>
-                            <div class="field">
-                                <label for="price">Precio: </label>
-                                <input type="number" name="price">
-                            </div>
-                            <div class="Bandas">
-                                <select id="bands" multiple="multiple">
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                            <p id="send-data">Create</p>
-                        </form>
-                    </section>
-                    <button type="submit" class="btn btn-dark">Crear Festival</button>
-                    <a href="/festivales" class="btn btn-dark">Volver</a>
+                <div class="form-group">
+                    <label for="photo">Foto</label>
+                    <input name="photo" type="file" class="form-control" id="photo">
+                </div>
+
+
+
+
+                {{!-- <div class="field">
+                    <label for="date">Fecha: </label>
+                    <input type="date" name="date">
+                </div>
+                <div class="field">
+                    <label for="price">Precio: </label>
+                    <input type="number" name="price">
+                </div>
+                <div class="Bandas">
+                    <select name="billboard" id="bands" multiple="multiple">
+                        <option selected value="Band1">band1</option>
+                        <option selected value="Band2">band2</option>
+                        <option value="band3">bandjejeje</option>
+                    </select>
+                </div>
+                <a id="add-date">Create</a>
+
+                --}}
+
+
+
+
+                <button type="submit" class="btn btn-dark">Crear Festival</button>
+                <a href="/festivales" class="btn btn-dark">Volver</a>
             </form>
         </div>
 
-
-        <form action="/festivales/crear" method="post">
-            <div class="form-group">
-                <label for="name-input">Nombre</label>
-                <input name="name" type="text" class="form-control" id="name-input">
-            </div>
-            <div class="form-group">
-                <label for="longitude">ubicación:Longitud</label>
-                <input name="lng" type="text" class="form-control" id="longitude">
-            </div>
-            <div class="form-group">
-                <label for="latitude">ubicación:latitud</label>
-                <input name="lat" type="text" class="form-control" id="latitude">
-            </div>
-
-            <div class="form-group">
-                <label for="city-input">Ciudad</label>
-                <input name="city" type="text" class="form-control" id="city-input">
-            </div>
-            <div class="form-group">
-                <label for="country-input">Pais</label>
-                <input name="country" type="text" class="form-control" id="country-input">
-            </div>
+        <div class="col-md-8">
             <section class="container">
                 <section class="billboard-container">
                     <h2>Crear Fecha</h2>
-                    <form id="billboard-form" class="billboard-form">
+                    <div id="billboard-form" class="billboard-form">
                         <div class="field">
                             <label for="date">Fecha: </label>
                             <input type="date" name="date">
@@ -87,50 +72,20 @@
                             <label for="price">Precio: </label>
                             <input type="number" name="price">
                         </div>
-                        <div class="Bandas">
-                            <select id="bands" name="bands" multiple="multiple">
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                        <div class="bandas">
+                            <select id="bands " name="band_id" multiple="multiple">
+                                {{#each bands }}
+                                <option selected value="{{id}}">{{name}}</option>
+                                {{/each }}
                             </select>
                         </div>
-                        <p id="send-data">Create</p>
-                    </form>
+                        <div id="add-date">Create</div>
+                    </div>
                 </section>
-                <button type="submit" class="btn btn-dark">Crear Festival</button>
-                <a href="/festivales" class="btn btn-dark">Volver</a>
-        </form>
-    </div>
-    <div class="col-md-6">
-        <section class="container festival-container">
-            <section class="billboard-container">
-                <h2>Nueva Fecha</h2>
-                <form id="billboard-form" class="billboard-form">
-                    <div class="field">
-                        <label for="date">Fecha: </label>
-                        <input type="date" name="date">
-                    </div>
-                    <div class="field">
-                        <label for="price">Precio: </label>
-                        <input type="number" name="price">
-                    </div>
-                    <div class="bands">
-                        <label for="bands">Bandas: </label>
-                        <select name="bands" id="bands" multiple="multiple">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <p id="send-data">Create</p>
-                    <button type="submit" class="btn btn-dark">Crear Festival</button>
-                </form>
             </section>
 
-            <div class="col-md-4">
-                <div id="day-box">
-                </div>
-            </div>
-
+        </div>
+        <div id="day-box">
+        </div>
     </div>
 </div>

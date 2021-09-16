@@ -4,5 +4,6 @@ module.exports = app => {
   app.use('/festivales', require('./festival.route'))
   app.use('/usuarios', require('./user.route'))
   app.use('/bandas', require('./band.route'))
+  app.use("/api", require("./festivalDate.route"))
   app.use('/', require('./auth.route'))
 }

@@ -42,7 +42,6 @@ router.get('/', isLoginIn, (req, res, next) => {
 router.get('/:id', isLoginIn, (req, res, next) => {
   res.send("festival details")
 })
-<<<<<<< HEAD
 
 router.post('/detalles/:festivalId', (req, res) => {
   const { festivalId } = req.params
@@ -83,6 +82,4 @@ router.get('/detalles/:id', (req, res) => {
     .catch(err => console.log(err))
 })
 
-=======
->>>>>>> banchi
 module.exports = router

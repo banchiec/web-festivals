@@ -4,9 +4,9 @@ const { CDNupload } = require('../config/upload.config')
 const Festival = require('../models/festival.model')
 const Comment = require('../models/comment.model')
 const Band = require('../models/band.model')
+const { isLoginIn } = require('../midleware')
 
-
-router.get('/crear', (req, res, next) => {
+router.get('/crear', isLoginIn, (req, res, next) => {
   Band
     .find()
     .then(bands => {
@@ -32,13 +32,16 @@ router.post('/crear', CDNupload.single('photo'), (req, res, next) => {
 })
 
 //list
-router.get('/', (req, res, next) => {
-
-  Festival.find()
+router.get('/', isLoginIn, (req, res, next) => {
+  Festival
+    .find()
     .then(festivals => res.render('festivals/festivals', { festivals }))
     .catch(err => next(new Error(err)))
 })
 
+router.get('/:id', isLoginIn, (req, res, next) => {
+  res.send("festival details")
+})
 
 router.post('/detalles/:festivalId', (req, res) => {
   const { festivalId } = req.params

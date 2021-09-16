@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("https://www.rockfestbarcelona.com/wp-content/uploads/2019/10/Fondo2020-1.jpg");
+  /* background-image: url("https://www.rockfestbarcelona.com/wp-content/uploads/2019/10/Fondo2020-1.jpg"); */
 }
 
 a {
@@ -12,3 +12,6 @@ h1 {
   color: 15px;
 }
 
+#error-login{
+  color: red;
+}

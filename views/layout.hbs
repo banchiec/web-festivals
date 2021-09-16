@@ -17,18 +17,39 @@
 <body>
    <div class="container-fluid">
       <div class="fixed-top">
-         <div class="collapse fixed-rigth" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-               <h5 class="text-white h4">Collapsed content</h5>
-               <span class="text-muted">Toggleable via the navbar brand.</span>
-            </div>
-         </div>
-         <nav class="navbar navbar-dark bg-dark mb-5">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-               data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-               aria-expanded="false" aria-label="Toggle navigation">
+
+         <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+               aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
             </button>
+            <a class="navbar-brand" href="/">IronFest</a>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  {{#if currentSession}}
+                  <li class="nav-item active">
+                     <a class="nav-link" href="/festivales">Festivales<span class="sr-only">(current)</span></a>
+                  </li>
+                  {{#if isAdmin}}
+                  <li class="nav-item">
+                     <a class="nav-link" href="/usuarios">Usuarios</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/bandas">Bandas</a>
+                  </li>
+                  {{/if }}
+                  {{/if}}
+               </ul>
+               <form class="form-inline my-2 my-lg-0">
+                  {{#if currentSession}}
+                  <a href="/cerrar-sesion" class="btn btn-outline-success my-2 my-sm-0 ml-2">Cerrar Sesión</a>
+                  {{else}}
+                  <a href="/registro" class="btn btn-outline-success my-2 my-sm-0">Resgistrar</a>
+                  <a href="/iniciar-sesion" class="btn btn-outline-success my-2 my-sm-0 ml-2">Iniciar Sesión</a>
+                  {{/if }}
+               </form>
+            </div>
          </nav>
       </div>
       {{{body}}}

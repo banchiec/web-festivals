@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const User = require('../models/User.model')
+const { isLoginIn, checkRole } = require('../midleware')
 
-
-router.get('/', (req, res) => {
+router.get('/', isLoginIn, checkRole("admin"), (req, res) => {
     User
         .find()
         .then((users) => {

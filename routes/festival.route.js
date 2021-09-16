@@ -1,16 +1,17 @@
-
 const router = require('express').Router()
 
 const { CDNupload } = require('../config/upload.config')
 const Festival = require('../models/festival.model')
 const Comment = require('../models/comment.model')
-const User = require('../models/User.model')
-
+const Band = require('../models/band.model')
 
 
 router.get('/crear', (req, res, next) => {
-  Festival.find()
-    .then(allFestivals => res.render('festivals/new-festival', { festivals: allFestivals }))
+  Band
+    .find()
+    .then(bands => {
+      res.render('festivals/new-festival', { bands })
+    })
     .catch(err => next(new Error(err)))
 })
 
@@ -18,15 +19,19 @@ router.post('/crear', CDNupload.single('photo'), (req, res, next) => {
 
   const { name, lat, lng, city, country, ranking, billboard } = req.body
   console.log(req.body)
+  console.log(req.body.billboard)
+  console.log(req.file)
 
   const location = {
     type: 'Point',
     coordinates: [lat, lng]
   }
 
-  Festival.create({ name, photo, location, city, country, ranking, billboard })
+  Festival
+    .create({ name, location, city, country, photo: req.file.path, ranking, billboard })
     .then(() => res.redirect('/'))
     .catch(err => next(new Error(err)))
+
 })
 
 //list

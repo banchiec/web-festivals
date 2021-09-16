@@ -1,13 +1,18 @@
 <div class="container mt-4">
-  <a href="/festivales/crear" class="btn btn-dark">Crear Nuevo</a>
 
+  <a href="/festivales/crear" class="btn btn-dark">Crear Nuevo</a>
   <h1 style="font-weight: 100">Festivales</h1>
 
-  {{#each festivals}} 
-  <a href="/festivales/detalles/{{_id}}" class="btn btn-sm btn-dark">Ver detalles</a>
+  {{#each festivals}}
+  {{!-- <a href="/festivales/{{_id}}" class="btn btn-sm btn-dark">Ver detalles</a> --}}
   <h4>{{name}}</h4>
-  
-  <hr> 
- {{/each}}
+  <p>{{description}}</p>
+  <img src="{{photo}}" width="200" />
+  <a href="festivales/{{id}}">Details</a>
+  {{!-- <small><strong>Longitud: </strong> {{length}}m | <strong>Inversiones: </strong> {{inversions}} | <strong>Parque:
+      --}}
+      {{!-- </strong> {{park_id.name}}</small> --}}
+  <hr>
+  {{/each}}
 
 </div>

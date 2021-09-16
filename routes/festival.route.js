@@ -1,7 +1,12 @@
 
 const router = require('express').Router()
 
+const { CDNupload } = require('../config/upload.config')
 const Festival = require('../models/festival.model')
+const Comment = require('../models/comment.model')
+const User = require('../models/User.model')
+
+
 
 router.get('/crear', (req, res, next) => {
   Festival.find()
@@ -9,7 +14,7 @@ router.get('/crear', (req, res, next) => {
     .catch(err => next(new Error(err)))
 })
 
-router.post('/crear', (req, res, next) => {
+router.post('/crear', CDNupload.single('photo'), (req, res, next) => {
 
   const { name, lat, lng, city, country, ranking, billboard } = req.body
   console.log(req.body)
@@ -19,29 +24,57 @@ router.post('/crear', (req, res, next) => {
     coordinates: [lat, lng]
   }
 
-  Festival.create({ name, location, city, country, ranking, billboard })
+  Festival.create({ name, photo, location, city, country, ranking, billboard })
     .then(() => res.redirect('/'))
     .catch(err => next(new Error(err)))
 })
 
 //list
 router.get('/', (req, res, next) => {
+
   Festival.find()
-    // .populate('Comment')
-    // .populate('FestivalDate')
-    .populate('billboard')
-    .then(festivals => {
-      console.log(festivals[0].billboard)
-      res.render('festivals/festivals', { festivals })
-    })
+    .then(festivals => res.render('festivals/festivals', { festivals }))
     .catch(err => next(new Error(err)))
 })
 
 
+router.post('/detalles/:festivalId', (req, res) => {
+  const { festivalId } = req.params
+  console.log(festivalId)
+  const { description, user_id } = req.body
 
+  //PASO 3
+  Comment
+    .create({ user_id, description })
+    .then(comment => {
 
+      Festival.findByIdAndUpdate(festivalId, { $push: { comments: comment.id } })
+        .then(festival => {
+          res.redirect(`/festivales/detalles/${festivalId}`)
+        })
+        .catch(err => console.log(err))
 
+      console.log(comment.user_id, comment.description, comment)
+    })
+    .catch(err => console.log(err))
+})
 
+router.get('/detalles/:id', (req, res) => {
 
+  const { id } = req.params
+  Festival
+    .findById(id)
+    .populate({
+      path: 'comments',
+      populate: {
+        path: 'user_id'
+      }
+    })
+    .then(festival => {
+      console.log(festival)
+      res.render('festivals/festival-details', { festival, user: req.session.currentUser })
+    })
+    .catch(err => console.log(err))
+})
 
 module.exports = router

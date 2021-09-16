@@ -3,13 +3,11 @@
 
   <h1 style="font-weight: 100">Festivales</h1>
 
-  {{!-- {{#each festivals}} --}}
-  {{!-- <a href="/festivales/{{_id}}" class="btn btn-sm btn-dark">Ver detalles</a> --}}
-  {{!-- <h4>{{name}}</h4>
-  <p>{{description}}</p>
-  <small><strong>Longitud: </strong> {{length}}m | <strong>Inversiones: </strong> {{inversions}} | <strong>Parque:
-    </strong> {{park_id.name}}</small>
-  <hr> --}}
-  {{!-- {{/each}} --}}
+  {{#each festivals}} 
+  <a href="/festivales/detalles/{{_id}}" class="btn btn-sm btn-dark">Ver detalles</a>
+  <h4>{{name}}</h4>
+  
+  <hr> 
+ {{/each}}
 
 </div>

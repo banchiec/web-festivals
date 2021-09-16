@@ -23,10 +23,13 @@
     </form>
     <section class="comment-container">
         <h2>Comentarios</h2>
-        {{#each festival.comments}}
-        <h4>{{user_id.username}}</h4>
-        <p>{{description}}</p>
-        {{/each}}
+        <div class="col-md-2">
+            {{#each festival.comments}}
+            <img src={{user_id.photo}} class="img img-rounded img-fluid" />
+            <h4>{{user_id.username}}</h4>
+            <p>{{description}}</p>
+            {{/each}}
+        </div>
     </section>
 
     <br />

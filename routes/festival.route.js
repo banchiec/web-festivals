@@ -18,9 +18,6 @@ router.get('/crear', (req, res, next) => {
 router.post('/crear', CDNupload.single('photo'), (req, res, next) => {
 
   const { name, lat, lng, city, country, ranking, billboard } = req.body
-  console.log(req.body)
-  console.log(req.body.billboard)
-  console.log(req.file)
 
   const location = {
     type: 'Point',

@@ -12,16 +12,11 @@ router.get('/registro', (req, res, next) => {
 })
 
 router.post("/registro", CDNupload.single('photo'), (req, res) => {
-
-    console.log(req.body)
-
     const { firstName, lastName, email, username, userPwd } = req.body
-
     if (userPwd.length === 0) {
         res.render('auth/signup-form', { errorMsg: "Contraseña obligatoria" })
         return
     }
-
     const bcryptSalt = 10
     const salt = bcrypt.genSaltSync(bcryptSalt)
     const hashPass = bcrypt.hashSync(userPwd, salt)

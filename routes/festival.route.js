@@ -45,10 +45,4 @@ router.get('/', isLoginIn, (req, res, next) => {
 router.get('/:id', isLoginIn, (req, res, next) => {
   res.send("festival details")
 })
-
-
-
-
-
-
 module.exports = router

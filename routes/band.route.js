@@ -1,9 +1,10 @@
 const router = require('express').Router()
 const Band = require('../models/band.model')
 
+const { isLoginIn } = require('../midleware')
 const { CDNupload } = require('../config/upload.config')
 
-router.get('/', (req, res) => {
+router.get('/', isLoginIn, (req, res) => {
     Band
         .find()
         .then((bands) => {
@@ -14,7 +15,7 @@ router.get('/', (req, res) => {
 
 })
 
-router.get('/crear', (req, res) => {
+router.get('/crear', isLoginIn, (req, res) => {
     res.render('band/band-create')
 })
 
@@ -37,7 +38,7 @@ router.post('/crear', CDNupload.single('photo'), (req, res) => {
         .catch(err => console.log(err))
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', isLoginIn, (req, res) => {
     Band
         .findById(req.params.id)
         .then((band) => {

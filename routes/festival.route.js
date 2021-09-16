@@ -1,10 +1,10 @@
 const router = require('express').Router()
 const Festival = require('../models/festival.model')
 const Band = require('../models/band.model')
-const FestivalDate = require('../models/festivalDate.model')
+const { isLoginIn } = require('../midleware')
 const { CDNupload } = require('../config/upload.config')
 
-router.get('/crear', (req, res, next) => {
+router.get('/crear', isLoginIn, (req, res, next) => {
   Band
     .find()
     .then(bands => {
@@ -33,7 +33,7 @@ router.post('/crear', CDNupload.single('photo'), (req, res, next) => {
 })
 
 //list
-router.get('/', (req, res, next) => {
+router.get('/', isLoginIn, (req, res, next) => {
   Festival
     .find()
     // .populate('Comment')
@@ -42,7 +42,7 @@ router.get('/', (req, res, next) => {
     .catch(err => next(new Error(err)))
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', isLoginIn, (req, res, next) => {
   res.send("festival details")
 })
 

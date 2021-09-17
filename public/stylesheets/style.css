@@ -1,17 +1,166 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /* background-image: url("https://www.rockfestbarcelona.com/wp-content/uploads/2019/10/Fondo2020-1.jpg"); */
+
+  color: #ffffff;
+  margin: 0;
+  padding: 60px;
+  font-family: 'New Rocker', cursive;
+  font-size: 35px;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+  background-image: url("https://www.rockfestbarcelona.com/wp-content/uploads/2019/10/Fondo2020-1.jpg"); 
 }
 
 a {
-  color: #00b7ff;
+  color: #ffffff;
 }
 
+
 h1 {
-  color: 15px;
+  color: #ffffff;
+  text-align: center;
+  padding: 1.5%;
 }
 
 #error-login{
   color: red;
+}
+
+
+.band {
+  margin: 0 auto;
+  width: 90%;
+  margin-top: 2%;
+  
+
+}
+.bands {
+  margin: 0 auto;
+  width: 90%;
+  margin-top: 7%;
+ 
+}
+
+
+.band div, .bands div {
+  margin-bottom: 16px;
+}
+
+@media only screen and (min-width: 500px) {
+  .band {
+  }  
+  .item-1 {
+  }
+  .item-1 h1 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 850px) {
+  .band {
+  }
+}
+.card {
+  
+  background: white;
+  text-decoration: none;
+  color: #444;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+ 
+  
+
+  position: relative;
+  top: 0;
+  transition: all .1s ease-in;
+
+}
+
+.card:hover {
+  top: -2px;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+}
+
+.card article {
+  padding: 10px;
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+ 
+.article {
+  text-align: center;
+  font-size: 2em;
+}
+
+.card .thumb {
+  
+  padding-bottom: 1%;
+  width: 400px;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center center;
+
+
+}
+
+ 
+.card .thumb img {
+  
+  padding-bottom: 1%;
+  height: 500px;
+  object-fit: cover
+}
+
+
+.card h5 {
+  font-size: 20px;
+  margin: 0;
+  color: #333;
+}
+
+.create-button {
+  padding: 5%;
+  background-color: white;
+  color: rgb(54, 20, 20);
+  
+}
+
+.billboard-container{
+  color: #ffffff;
+}
+
+.col-md-4{
+  color: #ffffff;
+
+} 
+.container-band{
+  padding: 3%;
+}  
+
+.container-description{
+  
+  text-align: justify;
+  padding: 3%;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.details-col-lg-5{
+  color: #ffffff;
+  padding-top: 4%;
+  padding-right: 10%;
+  margin-top: 10px;
+
+}
+
+.user-form-group{
+  padding: 2%;
+}
+
+.comment-container{
+  color: black;
+  padding: 3%;
+  background-color: #ffffff;
 }

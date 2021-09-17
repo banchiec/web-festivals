@@ -135,7 +135,15 @@ h1 {
 .container-band{
   padding: 3%;
 }  
+.container-festival{
+  text-align: center;
+  align-content: center;
+}
 
+.container-festival img{
+  margin-left: 15%;
+  width: 80%;
+}
 .container-description{
   
   text-align: justify;

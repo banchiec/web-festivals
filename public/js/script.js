@@ -32,11 +32,18 @@ document.addEventListener(
     const valuesImputsForm = document.querySelectorAll('#form input').values
     const idDates = document.querySelectorAll('.bandas select').values
 
+
+    function allFestivals() {
+      axios.get('http://localhost:3000/api/festivals')
+        .then(response => {
+          // console.log(response.data)
+        })
+    }
+    allFestivals()
+
     button.addEventListener("click", function (e) {
       e.preventDefault()
-
       const values = getSelectValues(select)
-
       axios.post('http://localhost:3000/api/create', { date: inputs[0].value, price: inputs[1].value, band_id: values })
         .then(response => {
           console.log(response.data._id)
@@ -62,11 +69,6 @@ document.addEventListener(
         valuesInputs.push(Element.value)
         console.log(Element.value)
       })
-
-      // axios.post('http://localhost:3000/api/festival/create', { valuesInputs })
-      //   .then(response => {
-      //     console.log(response.data)
-      //   })
     })
 
     console.log("web-festivals JS imported successfully!");

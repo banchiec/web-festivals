@@ -1,18 +1,19 @@
-<div class="container mt-4">
+<div>
+  <h1>Festivales</h1>
 
-  <a href="/festivales/crear" class="btn btn-dark">Crear Nuevo</a>
-  <h1 style="font-weight: 100">Festivales</h1>
-
-  {{#each festivals}}
-  <h4>{{name}}</h4>
-  <p>{{description}}</p>
-  <img src="{{photo}}" width="200" />
-  {{!-- <a href="festivales/{{id}}">Details</a> --}}
-  <a href="/festivales/detalles/{{_id}}" class="btn btn-sm btn-dark">Ver detalles</a>
-  {{!-- <small><strong>Longitud: </strong> {{length}}m | <strong>Inversiones: </strong> {{inversions}} | <strong>Parque:
-      --}}
-      {{!-- </strong> {{park_id.name}}</small> --}}
-  <hr>
-  {{/each}}
-
+  <div class="row justify-content-center band">
+    {{#each festivals}}
+    <div class="col-sm-12 col-md-4 col-lg-3 item-1">
+      <a href="/festivales/detalles/{{_id}}" class="card">
+        <div class="thumb">
+          <img src="{{photo}}" class="card-img" alt="cartel del festival">
+        </div>
+        <article>
+          <h2>{{name}}</h2>
+          <span>{{city}}{{country}}</span>
+        </article>
+      </a>
+    </div>
+    {{/each}}
+  </div>
 </div>

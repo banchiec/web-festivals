@@ -1,37 +1,35 @@
-<div class="container mt-4">
-    <h1 style="font-weight: 100">{{festival.name}}</h1>
-    <br />
-    <div class="container">
-        <div class="row">
-            <div class="col col-md-6 col-sm-2 col-xs-12">
-                <img src={{festival.photo}} class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col col-md-6 col-sm-2 col-xs-12">
-                <h5 style="font-weight: 100">Ciudad: {{festival.city}}</h5>
-                <h5 style="font-weight: 100">Pais: {{festival.country}}</h5>
-            </div>
-        </div>
-    </div>
-    <form action="/festivales/detalles/{{festival.id}}" method="POST" id="comment-form" class="comment-form">
-        <div class="form-group">
-            {{user.username}}:
-            <label for="username-input"></label>
-            <input hidden name="user_id" value={{user._id}} type="text" class="form-control" id="username-input">
-            <input type="text" class="form-control" id="description-input" name="description">
-        </div>
-        <button id="send-data">Create</button>
-    </form>
-    <section class="comment-container">
-        <h2>Comentarios</h2>
-        <div class="col-md-2">
-            {{#each festival.comments}}
-            <img src={{user_id.photo}} class="img img-rounded img-fluid" />
-            <h4>{{user_id.username}}</h4>
-            <p>{{description}}</p>
-            {{/each}}
-        </div>
-    </section>
-
-    <br />
-    <a href="/festivales" class="btn btn-dark">volver</a>
+<div class="container-festival">
+    <h1>{{festival.name}}</h1>
 </div>
+
+<div class="row justify-content-between">
+    <div class="col-lg-6">
+        <img src={{festival.photo}} class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="details-col-lg-5">
+        <h5 style="font-weight: 100">Ciudad: {{festival.city}}</h5>
+        <h5 style="font-weight: 100">Pais: {{festival.country}}</h5>
+        <h5 style="font-weight: 100">Ubicacion: {{festival.location}}</h5>
+        <form action="/festivales/detalles/{{festival.id}}" method="POST" id="comment-form" class="comment-form">
+            <div class="user-form-group">
+                {{user.username}}:
+                <label for="username-input"></label>
+                <input hidden name="user_id" value={{user._id}} type="text" class="form-control" id="username-input">
+                <input type="text" class="form-control" id="description-input" name="description">
+            </div><br/>
+            <button id="send-data">Create</button><br/>
+        </form>
+        <section class="comment-container">
+            <h2>Comentarios</h2>
+            <div class="col-md-2">
+                {{#each festival.comments}}
+                <img src={{user_id.photo}} class="img img-rounded img-fluid" />
+                <h4>{{user_id.username}}</h4>
+                <p>{{description}}</p>
+                {{/each}}
+            </div>
+        </section>
+    </div>
+</div>
+<br />
+<a href="/festivales" class="btn btn-dark">volver</a>

@@ -41,7 +41,7 @@ document.addEventListener(
     }
     allFestivals()
 
-    button.addEventListener("click", function (e) {
+    button?.addEventListener("click", function (e) {
       e.preventDefault()
       const values = getSelectValues(select)
       axios.post('http://localhost:3000/api/create', { date: inputs[0].value, price: inputs[1].value, band_id: values })

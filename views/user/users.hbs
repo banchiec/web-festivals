@@ -1,15 +1,20 @@
-<ul class="mt-4">
-    {{#each users}}
-
-    <li>{{firstName}}</li>
-    <li>{{lastName}}</li>
-    <li>{{username}}</li>
-    <li>{{email}}</li>
-    <img src={{photo}} />
-    <hr>
-
-    {{/each }}
-    <p id="error-login">
-        {{errorMsg}}
-    </p>
-</ul>
+<div class='container container-user'>
+ {{#each users}}
+<div class="card mb-3" style="max-width: 540px;">
+   
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{photo}}" class="card-img" alt="imagen del usuario">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{username}}</h5>
+        <p class="card-text">{{firstName}} {{lastName}}</p>
+        <p class="card-text"><small class="text-muted">{{email}}</small></p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+{{/each }}
+</div>

@@ -9,7 +9,7 @@
     <div class="details-col-lg-5">
         <h5 style="font-weight: 100">Ciudad: {{festival.city}}</h5>
         <h5 style="font-weight: 100">Pais: {{festival.country}}</h5>
-        <h5 style="font-weight: 100">Ubicacion: {{festival.location}}</h5>
+        {{!-- <h5 style="font-weight: 100">Ubicacion: {{festival.location}}</h5> --}}
         <form action="/festivales/detalles/{{festival.id}}" method="POST" id="comment-form" class="comment-form">
             <div class="user-form-group">
                 {{user.username}}:

@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
         .find()
         .then((festivals) => {
             console.log(festivals)
-            res.render('index', { festivals })
+            res.render('index', { festivals, isAdmin: req.session.currentUser?.role === 'admin' ? true : false })
         })
         .catch()
 })

@@ -1,10 +1,10 @@
 const router = require('express').Router()
 const Band = require('../models/band.model')
 
-const { isLoginIn } = require('../midleware')
+const { isLoginIn, checkRole } = require('../midleware')
 const { CDNupload } = require('../config/upload.config')
 
-router.get('/', isLoginIn, (req, res) => {
+router.get('/', isLoginIn, checkRole('admin'), (req, res) => {
     Band
         .find()
         .then((bands) => {
@@ -12,7 +12,6 @@ router.get('/', isLoginIn, (req, res) => {
             res.render('band/band', { bands })
         })
         .catch(error => console.error(error))
-
 })
 
 router.get('/crear', isLoginIn, (req, res) => {

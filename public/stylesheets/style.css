@@ -7,6 +7,11 @@ body {
   font-size: 35px;
   /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
   background-image: url("https://www.rockfestbarcelona.com/wp-content/uploads/2019/10/Fondo2020-1.jpg"); 
+  padding: 0;
+  margin: 0;
+  font-family: 'Bebas Neue',cursive;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+  /* background-image: url("https://www.rockfestbarcelona.com/wp-content/uploads/2019/10/Fondo2020-1.jpg"); */
 }
 
 a {
@@ -163,4 +168,63 @@ h1 {
   color: black;
   padding: 3%;
   background-color: #ffffff;
+#myMap{
+  height: 100vh;
+  background-color: red;
+}
+
+/* Navbar */
+#navbar-festivals ul li a{
+  border: 1px solid green;
+  color: black;
+}
+/* container festivals */
+#container-festivals {
+  position: absolute;
+  bottom: 15px;
+  left:2rem;
+  /* border-radius: 5%; */
+
+  width: 400px;
+  /* border: 1px solid grey; */
+  height: 500px;
+}
+th{
+  color: blue;
+  font-size: 1.5rem;
+}
+td{
+  font-size: 1.1rem;
+}
+/* Signup */
+.container-login{
+  margin-top: 5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid grey; */
+  /* box-shadow: .5px 2px 2px 0 grey; */
+}
+
+.container-login-form {
+  border: 1px solid grey;
+  padding: 15px 40px 15px 40px;
+  border-radius: 20px;
+  width: 30%;
+}
+.container-login form {
+  /* border: 1px solid grey; */
+  border:0 ;
+  /* margin-left: 2rem; */
+  padding: 0;
+}
+.container-login img {
+  /* border: 1px solid grey; */
+  padding: 0;
+  margin-bottom: 3rem;
+  margin-left: 10%;
+  /* margin-right: 2rem; */
+  width: 80%;
 }
